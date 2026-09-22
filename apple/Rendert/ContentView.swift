@@ -166,7 +166,6 @@ private struct LoginForm: View {
 
             TextField("E-Mail", text: $email)
                 .textInputAutocapitalization(.never)
-                .keyboardType(.emailAddress)
                 .textContentType(.username)
 
             SecureField("Passwort", text: $password)
