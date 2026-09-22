@@ -6,7 +6,7 @@
   objectVersion = 56;
   objects = {
 
-    1A2B3C4D5E6F708192A3B4C5 /* Project object */ = {
+    1A2B3C4D5E6F708192A3B4C4A /* Project object */ = {
       isa = PBXProject;
       attributes = {
         LastSwiftUpdateCheck = 2600;
@@ -256,5 +256,5 @@
       name = Release;
     };
   };
-  rootObject = 1A2B3C4D5E6F708192A3B4C5 /* Project object */;
+  rootObject = 1A2B3C4D5E6F708192A3B4C4A /* Project object */;
 }
