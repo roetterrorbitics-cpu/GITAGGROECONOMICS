@@ -1,0 +1,260 @@
+// !$*UTF8*$!
+{
+  archiveVersion = 1;
+  classes = {
+  };
+  objectVersion = 56;
+  objects = {
+
+    1A2B3C4D5E6F708192A3B4C5 /* Project object */ = {
+      isa = PBXProject;
+      attributes = {
+        LastSwiftUpdateCheck = 2600;
+        LastUpgradeCheck = 2600;
+        TargetAttributes = {
+          1A2B3C4D5E6F708192A3B4C5 /* Rendert */ = {
+            CreatedOnToolsVersion = 26.0;
+          };
+        };
+      };
+      buildConfigurationList = 1A2B3C4D5E6F708192A3B4C8 /* Project configuration list */;
+      compatibilityVersion = "Xcode 15.0";
+      developmentRegion = de;
+      hasScannedForEncodings = 0;
+      knownRegions = (
+        de,
+        en,
+        Base,
+      );
+      mainGroup = 1A2B3C4D5E6F708192A3B4C6 /* Main Group */;
+      productRefGroup = 1A2B3C4D5E6F708192A3B4C7 /* Products */;
+      projectDirPath = "";
+      projectRoot = "";
+      targets = (
+        1A2B3C4D5E6F708192A3B4C5 /* Rendert */,
+      );
+    };
+
+    1A2B3C4D5E6F708192A3B4C6 /* Main Group */ = {
+      isa = PBXGroup;
+      children = (
+        1A2B3C4D5E6F708192A3B4C9 /* Rendert */,
+        1A2B3C4D5E6F708192A3B4C7 /* Products */,
+      );
+      sourceTree = "<group>";
+    };
+
+    1A2B3C4D5E6F708192A3B4C9 /* Rendert */ = {
+      isa = PBXGroup;
+      children = (
+        1A2B3C4D5E6F708192A3B4D01 /* RendertApp.swift */,
+        1A2B3C4D5E6F708192A3B4D02 /* ContentView.swift */,
+        1A2B3C4D5E6F708192A3B4D03 /* SubscriptionStore.swift */,
+        1A2B3C4D5E6F708192A3B4D04 /* Assets.xcassets */,
+      );
+      path = Rendert;
+      sourceTree = "<group>";
+    };
+
+    1A2B3C4D5E6F708192A3B4C7 /* Products */ = {
+      isa = PBXGroup;
+      children = (
+        1A2B3C4D5E6F708192A3B4D05 /* Rendert.app */,
+      );
+      name = Products;
+      sourceTree = "<group>";
+    };
+
+    1A2B3C4D5E6F708192A3B4D05 /* Rendert.app */ = {
+      isa = PBXFileReference;
+      explicitFileType = wrapper.application;
+      includeInIndex = 0;
+      path = Rendert.app;
+      sourceTree = BUILT_PRODUCTS_DIR;
+    };
+
+    1A2B3C4D5E6F708192A3B4D01 /* RendertApp.swift */ = {
+      isa = PBXFileReference;
+      lastKnownFileType = sourcecode.swift;
+      path = RendertApp.swift;
+      sourceTree = "<group>";
+    };
+
+    1A2B3C4D5E6F708192A3B4D02 /* ContentView.swift */ = {
+      isa = PBXFileReference;
+      lastKnownFileType = sourcecode.swift;
+      path = ContentView.swift;
+      sourceTree = "<group>";
+    };
+
+    1A2B3C4D5E6F708192A3B4D03 /* SubscriptionStore.swift */ = {
+      isa = PBXFileReference;
+      lastKnownFileType = sourcecode.swift;
+      path = SubscriptionStore.swift;
+      sourceTree = "<group>";
+    };
+
+    1A2B3C4D5E6F708192A3B4D04 /* Assets.xcassets */ = {
+      isa = PBXFileReference;
+      lastKnownFileType = folder.assetcatalog;
+      path = Assets.xcassets;
+      sourceTree = "<group>";
+    };
+
+    1A2B3C4D5E6F708192A3B4D10 /* RendertApp.swift in Sources */ = {
+      isa = PBXBuildFile;
+      fileRef = 1A2B3C4D5E6F708192A3B4D01 /* RendertApp.swift */;
+    };
+
+    1A2B3C4D5E6F708192A3B4D11 /* ContentView.swift in Sources */ = {
+      isa = PBXBuildFile;
+      fileRef = 1A2B3C4D5E6F708192A3B4D02 /* ContentView.swift */;
+    };
+
+    1A2B3C4D5E6F708192A3B4D12 /* SubscriptionStore.swift in Sources */ = {
+      isa = PBXBuildFile;
+      fileRef = 1A2B3C4D5E6F708192A3B4D03 /* SubscriptionStore.swift */;
+    };
+
+    1A2B3C4D5E6F708192A3B4D13 /* Assets.xcassets in Resources */ = {
+      isa = PBXBuildFile;
+      fileRef = 1A2B3C4D5E6F708192A3B4D04 /* Assets.xcassets */;
+    };
+
+    1A2B3C4D5E6F708192A3B4C10 /* Sources */ = {
+      isa = PBXSourcesBuildPhase;
+      buildActionMask = 2147483647;
+      files = (
+        1A2B3C4D5E6F708192A3B4D10 /* RendertApp.swift in Sources */,
+        1A2B3C4D5E6F708192A3B4D11 /* ContentView.swift in Sources */,
+        1A2B3C4D5E6F708192A3B4D12 /* SubscriptionStore.swift in Sources */,
+      );
+      runOnlyForDeploymentPostprocessing = 0;
+    };
+
+    1A2B3C4D5E6F708192A3B4C11 /* Resources */ = {
+      isa = PBXResourcesBuildPhase;
+      buildActionMask = 2147483647;
+      files = (
+        1A2B3C4D5E6F708192A3B4D13 /* Assets.xcassets in Resources */,
+      );
+      runOnlyForDeploymentPostprocessing = 0;
+    };
+
+    1A2B3C4D5E6F708192A3B4C12 /* Frameworks */ = {
+      isa = PBXFrameworksBuildPhase;
+      buildActionMask = 2147483647;
+      files = (
+      );
+      runOnlyForDeploymentPostprocessing = 0;
+    };
+
+    1A2B3C4D5E6F708192A3B4C5 /* Rendert */ = {
+      isa = PBXNativeTarget;
+      buildConfigurationList = 1A2B3C4D5E6F708192A3B4C14 /* Rendert target configuration list */;
+      buildPhases = (
+        1A2B3C4D5E6F708192A3B4C12 /* Frameworks */,
+        1A2B3C4D5E6F708192A3B4C10 /* Sources */,
+        1A2B3C4D5E6F708192A3B4C11 /* Resources */,
+      );
+      buildRules = (
+      );
+      dependencies = (
+      );
+      name = Rendert;
+      productName = Rendert;
+      productReference = 1A2B3C4D5E6F708192A3B4D05 /* Rendert.app */;
+      productType = "com.apple.product-type.application";
+    };
+
+    1A2B3C4D5E6F708192A3B4C8 /* Project configuration list */ = {
+      isa = XCConfigurationList;
+      buildConfigurations = (
+        1A2B3C4D5E6F708192A3B4C15 /* Debug */,
+        1A2B3C4D5E6F708192A3B4C16 /* Release */,
+      );
+      defaultConfigurationIsVisible = 0;
+      defaultConfigurationName = Release;
+    };
+
+    1A2B3C4D5E6F708192A3B4C14 /* Rendert target configuration list */ = {
+      isa = XCConfigurationList;
+      buildConfigurations = (
+        1A2B3C4D5E6F708192A3B4C17 /* Debug */,
+        1A2B3C4D5E6F708192A3B4C18 /* Release */,
+      );
+      defaultConfigurationIsVisible = 0;
+      defaultConfigurationName = Release;
+    };
+
+    1A2B3C4D5E6F708192A3B4C15 /* Debug */ = {
+      isa = XCBuildConfiguration;
+      buildSettings = {
+        SWIFT_VERSION = 6.0;
+        DEVELOPMENT_LANGUAGE = de;
+        MACOSX_DEPLOYMENT_TARGET = 14.0;
+        IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+        TVOS_DEPLOYMENT_TARGET = 17.0;
+        WATCHOS_DEPLOYMENT_TARGET = 10.0;
+        XROS_DEPLOYMENT_TARGET = 1.0;
+      };
+      name = Debug;
+    };
+
+    1A2B3C4D5E6F708192A3B4C16 /* Release */ = {
+      isa = XCBuildConfiguration;
+      buildSettings = {
+        SWIFT_VERSION = 6.0;
+        DEVELOPMENT_LANGUAGE = de;
+        MACOSX_DEPLOYMENT_TARGET = 14.0;
+        IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+        TVOS_DEPLOYMENT_TARGET = 17.0;
+        WATCHOS_DEPLOYMENT_TARGET = 10.0;
+        XROS_DEPLOYMENT_TARGET = 1.0;
+      };
+      name = Release;
+    };
+
+    1A2B3C4D5E6F708192A3B4C17 /* Debug */ = {
+      isa = XCBuildConfiguration;
+      buildSettings = {
+        PRODUCT_BUNDLE_IDENTIFIER = "com.roetterrorbitics.Rendert";
+        PRODUCT_NAME = Rendert;
+        SWIFT_VERSION = 6.0;
+        SWIFT_EMIT_LOC_STRINGS = YES;
+        INFOPLIST_KEY_CFBundleDisplayName = Rendert;
+        INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+        INFOPLIST_KEY_NSCameraUsageDescription = "Rendert nutzt die Kamera nur für Funktionen, die du aktiv aktivierst.";
+        GENERATE_INFOPLIST_FILE = YES;
+        CODE_SIGN_STYLE = Automatic;
+        DEVELOPMENT_TEAM = "";
+        TARGETED_DEVICE_FAMILY = "1,2";
+        SUPPORTS_MACCATALYST = YES;
+        SUPPORTS_MAC_DESKTOP = YES;
+        SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
+      };
+      name = Debug;
+    };
+
+    1A2B3C4D5E6F708192A3B4C18 /* Release */ = {
+      isa = XCBuildConfiguration;
+      buildSettings = {
+        PRODUCT_BUNDLE_IDENTIFIER = "com.roetterrorbitics.Rendert";
+        PRODUCT_NAME = Rendert;
+        SWIFT_VERSION = 6.0;
+        SWIFT_EMIT_LOC_STRINGS = YES;
+        INFOPLIST_KEY_CFBundleDisplayName = Rendert;
+        INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+        GENERATE_INFOPLIST_FILE = YES;
+        CODE_SIGN_STYLE = Automatic;
+        DEVELOPMENT_TEAM = "";
+        TARGETED_DEVICE_FAMILY = "1,2";
+        SUPPORTS_MACCATALYST = YES;
+        SUPPORTS_MAC_DESKTOP = YES;
+        SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
+      };
+      name = Release;
+    };
+  };
+  rootObject = 1A2B3C4D5E6F708192A3B4C5 /* Project object */;
+}
