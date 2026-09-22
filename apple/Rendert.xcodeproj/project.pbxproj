@@ -51,6 +51,9 @@
         1A2B3C4D5E6F708192A3B4D02 /* ContentView.swift */,
         1A2B3C4D5E6F708192A3B4D03 /* SubscriptionStore.swift */,
         1A2B3C4D5E6F708192A3B4D04 /* Assets.xcassets */,
+        1A2B3C4D5E6F708192A3B4D06 /* AppConfig.swift */,
+        1A2B3C4D5E6F708192A3B4D07 /* KeychainStore.swift */,
+        1A2B3C4D5E6F708192A3B4D08 /* AuthStore.swift */,
       );
       path = Rendert;
       sourceTree = "<group>";
@@ -101,6 +104,42 @@
       sourceTree = "<group>";
     };
 
+    1A2B3C4D5E6F708192A3B4D06 /* AppConfig.swift */ = {
+      isa = PBXFileReference;
+      lastKnownFileType = sourcecode.swift;
+      path = AppConfig.swift;
+      sourceTree = "<group>";
+    };
+
+    1A2B3C4D5E6F708192A3B4D07 /* KeychainStore.swift */ = {
+      isa = PBXFileReference;
+      lastKnownFileType = sourcecode.swift;
+      path = KeychainStore.swift;
+      sourceTree = "<group>";
+    };
+
+    1A2B3C4D5E6F708192A3B4D08 /* AuthStore.swift */ = {
+      isa = PBXFileReference;
+      lastKnownFileType = sourcecode.swift;
+      path = AuthStore.swift;
+      sourceTree = "<group>";
+    };
+
+    1A2B3C4D5E6F708192A3B4D14 /* AppConfig.swift in Sources */ = {
+      isa = PBXBuildFile;
+      fileRef = 1A2B3C4D5E6F708192A3B4D06 /* AppConfig.swift */;
+    };
+
+    1A2B3C4D5E6F708192A3B4D15 /* KeychainStore.swift in Sources */ = {
+      isa = PBXBuildFile;
+      fileRef = 1A2B3C4D5E6F708192A3B4D07 /* KeychainStore.swift */;
+    };
+
+    1A2B3C4D5E6F708192A3B4D16 /* AuthStore.swift in Sources */ = {
+      isa = PBXBuildFile;
+      fileRef = 1A2B3C4D5E6F708192A3B4D08 /* AuthStore.swift */;
+    };
+
     1A2B3C4D5E6F708192A3B4D10 /* RendertApp.swift in Sources */ = {
       isa = PBXBuildFile;
       fileRef = 1A2B3C4D5E6F708192A3B4D01 /* RendertApp.swift */;
@@ -128,6 +167,9 @@
         1A2B3C4D5E6F708192A3B4D10 /* RendertApp.swift in Sources */,
         1A2B3C4D5E6F708192A3B4D11 /* ContentView.swift in Sources */,
         1A2B3C4D5E6F708192A3B4D12 /* SubscriptionStore.swift in Sources */,
+        1A2B3C4D5E6F708192A3B4D14 /* AppConfig.swift in Sources */,
+        1A2B3C4D5E6F708192A3B4D15 /* KeychainStore.swift in Sources */,
+        1A2B3C4D5E6F708192A3B4D16 /* AuthStore.swift in Sources */,
       );
       runOnlyForDeploymentPostprocessing = 0;
     };
@@ -224,6 +266,7 @@
         SWIFT_EMIT_LOC_STRINGS = YES;
         INFOPLIST_KEY_CFBundleDisplayName = Rendert;
         INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+        INFOPLIST_KEY_RENDERT_BACKEND_URL = "https://your-production-domain.example";
         INFOPLIST_KEY_NSCameraUsageDescription = "Rendert nutzt die Kamera nur für Funktionen, die du aktiv aktivierst.";
         GENERATE_INFOPLIST_FILE = YES;
         CODE_SIGN_STYLE = Automatic;
