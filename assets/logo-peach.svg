@@ -1,0 +1,42 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title description">
+  <title id="title">Peach app logo</title>
+  <description id="description">A polished peach fruit mark in a soft rounded-square app icon.</description>
+  <defs>
+    <linearGradient id="background" x1="154" y1="88" x2="872" y2="936" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF9F4"/>
+      <stop offset="0.5" stop-color="#FFF0E5"/>
+      <stop offset="1" stop-color="#F8D5C5"/>
+    </linearGradient>
+    <radialGradient id="fruit" cx="0" cy="0" r="1" gradientTransform="translate(396 358) rotate(57.8) scale(559 518)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF5E7"/>
+      <stop offset="0.36" stop-color="#FFD3AF"/>
+      <stop offset="0.76" stop-color="#F48F78"/>
+      <stop offset="1" stop-color="#E56562"/>
+    </radialGradient>
+    <linearGradient id="leaf" x1="550" y1="197" x2="744" y2="387" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#638F6B"/>
+      <stop offset="1" stop-color="#245B50"/>
+    </linearGradient>
+    <linearGradient id="stem" x1="488" y1="261" x2="560" y2="344" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8B6452"/>
+      <stop offset="1" stop-color="#52372F"/>
+    </linearGradient>
+    <filter id="shadow" x="141" y="202" width="742" height="678" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="34" stdDeviation="25" flood-color="#A94D4D" flood-opacity="0.2"/>
+    </filter>
+    <filter id="highlight" x="248" y="291" width="352" height="406" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="12"/>
+    </filter>
+  </defs>
+  <rect x="48" y="48" width="928" height="928" rx="214" fill="url(#background)"/>
+  <rect x="48.75" y="48.75" width="926.5" height="926.5" rx="213.25" stroke="#FFFDFB" stroke-opacity="0.9" stroke-width="1.5"/>
+  <g filter="url(#shadow)">
+    <path d="M510 308C554 255 600 215 657 200C707 187 752 200 777 231C799 258 793 288 774 315C731 376 653 395 560 364L510 308Z" fill="url(#leaf)"/>
+    <path d="M506 333C492 290 501 254 534 224C554 206 579 195 605 190C606 238 579 293 530 338L506 333Z" fill="url(#stem)"/>
+    <path d="M516 321C435 264 308 283 230 372C151 463 163 646 262 745C361 844 520 856 623 773C694 716 722 627 707 548C769 485 778 378 704 325C652 288 579 286 516 321Z" fill="url(#fruit)"/>
+    <path d="M516 321C486 439 491 623 623 773C694 716 722 627 707 548C769 485 778 378 704 325C652 288 579 286 516 321Z" fill="#D75F61" fill-opacity="0.2"/>
+    <path d="M515 322C527 441 538 626 623 773" stroke="#C85C62" stroke-opacity="0.32" stroke-width="17" stroke-linecap="round"/>
+    <path d="M356 364C298 403 269 475 281 549" stroke="#FFF9F0" stroke-opacity="0.76" stroke-width="39" stroke-linecap="round" filter="url(#highlight)"/>
+    <path d="M278 652C304 708 349 747 407 769" stroke="#B94E57" stroke-opacity="0.16" stroke-width="17" stroke-linecap="round"/>
+  </g>
+</svg>
