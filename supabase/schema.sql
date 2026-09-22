@@ -1,16 +1,42 @@
 create table if not exists public.subscriptions (
-id uuid primary key default gen_random_uuid(),
-user_id uuid not null references auth.users(id) on delete cascade,
-plan text not null check (plan in ('creator','pro')),
-provider text not null default 'paypal',
-provider_subscription_id text unique,
-status text not null default 'pending',
-created_at timestamptz not null default now(),
-updated_at timestamptz not null default now()
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid not null references auth.users(id) on delete cascade,
+  plan text not null check (plan in ('creator','pro')),
+  provider text not null default 'paypal',
+  provider_subscription_id text unique,
+  provider_transaction_id text,
+  original_transaction_id text,
+  status text not null default 'pending',
+  expires_at timestamptz,
+  source_metadata jsonb not null default '{}'::jsonb,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
 );
+
 alter table public.subscriptions enable row level security;
-drop policy if exists "Users can read own subscriptions" on public.subscriptions;
-create policy "Users can read own subscriptions" on public.subscriptions for select to authenticated using (auth.uid()=user_id);
-drop policy if exists "Users cannot write subscriptions directly" on public.subscriptions;
-create policy "Users cannot write subscriptions directly" on public.subscriptions for insert to authenticated with check (false);
+alter table public.subscriptions add column if not exists provider_transaction_id text;
+alter table public.subscriptions add column if not exists original_transaction_id text;
+alter table public.subscriptions add column if not exists expires_at timestamptz;
+alter table public.subscriptions add column if not exists source_metadata jsonb not null default '{}'::jsonb;
+
+create unique index if not exists subscriptions_original_transaction_id_unique
+  on public.subscriptions(original_transaction_id)
+  where original_transaction_id is not null;
+
 create index if not exists subscriptions_user_id_idx on public.subscriptions(user_id);
+create index if not exists subscriptions_provider_transaction_id_idx on public.subscriptions(provider_transaction_id);
+
+drop policy if exists "Users can read own subscriptions" on public.subscriptions;
+create policy "Users can read own subscriptions"
+on public.subscriptions for select to authenticated
+using (auth.uid()=user_id);
+
+drop policy if exists "Users cannot write subscriptions directly" on public.subscriptions;
+create policy "Users cannot write subscriptions directly"
+on public.subscriptions for insert to authenticated
+with check (false);
+
+drop policy if exists "Users cannot update subscriptions directly" on public.subscriptions;
+create policy "Users cannot update subscriptions directly"
+on public.subscriptions for update to authenticated
+using (false);
