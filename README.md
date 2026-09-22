@@ -32,3 +32,10 @@ Die Plan-IDs müssen auf aktive Billing-Pläne zeigen. Die finale Freischaltung 
 Vercel ist der vorgesehene Produktionshost für Frontend plus /api. GitHub Pages bleibt als statische Vorschau möglich.
 
 Rechtstexte, Datenschutz, Impressum, Widerrufsbelehrung und steuerliche Angaben vor öffentlichem Verkauf finalisieren.
+
+## Native Apple App
+
+Unter `apple/` liegt die native SwiftUI-App für iPhone/iPad und Mac. Sie enthält native Supabase-Authentifizierung, Keychain-Session-Speicherung sowie StoreKit-2-Abos für Creator und Pro.
+
+Die Apple-Abo-Transaktionen werden serverseitig über die App Store Server API mit dem Rendert-Benutzerkonto synchronisiert. Vor der Veröffentlichung müssen App Store Connect, Signing, Produktpreise und Server-Credentials eingerichtet werden.
+
