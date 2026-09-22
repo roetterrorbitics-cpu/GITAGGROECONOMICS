@@ -1,21 +1,11 @@
-const slides = [...document.querySelectorAll('.slide')];
-const counter = document.querySelector('#counter');
-let current = 0;
-
-function showSlide(index) {
-  current = (index + slides.length) % slides.length;
-  slides.forEach((slide, position) => slide.classList.toggle('active', position === current));
-  counter.textContent = `${current + 1} / ${slides.length}`;
-  history.replaceState(null, '', current === 0 ? location.pathname : `#${slides[current].id || current + 1}`);
-}
-
-document.querySelector('#next').addEventListener('click', () => showSlide(current + 1));
-document.querySelector('#previous').addEventListener('click', () => showSlide(current - 1));
-document.addEventListener('keydown', ({ key }) => {
-  if (key === 'ArrowRight' || key === 'PageDown') showSlide(current + 1);
-  if (key === 'ArrowLeft' || key === 'PageUp') showSlide(current - 1);
-});
-document.querySelectorAll('a[href^="#"]').forEach((link) => link.addEventListener('click', (event) => {
-  const target = slides.findIndex((slide) => `#${slide.id}` === link.getAttribute('href'));
-  if (target >= 0) { event.preventDefault(); showSlide(target); }
-}));
+const state={supabase:null,config:null,user:null,signUpMode:false};
+async function getConfig(){const res=await fetch('/api/config',{headers:{Accept:'application/json'}});if(!res.ok)throw new Error('Konfiguration nicht verfügbar');return res.json();}
+async function boot(){try{state.config=await getConfig();if(!state.config.supabaseUrl||!state.config.supabaseAnonKey)throw new Error('Supabase ist noch nicht konfiguriert.');const mod=await import('https://esm.sh/@supabase/supabase-js@2');state.supabase=mod.createClient(state.config.supabaseUrl,state.config.supabaseAnonKey);const {data}=await state.supabase.auth.getSession();state.user=data.session?.user??null;state.supabase.auth.onAuthStateChange((_event,session)=>{state.user=session?.user??null;renderAuth();});document.querySelector('#config-status').textContent='Account-System bereit.';renderAuth();}catch(err){document.querySelector('#config-status').textContent=err.message;renderAuth();}}
+function showView(name){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.querySelector('#'+name+'-view')?.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
+function openAuth(signUp=false){state.signUpMode=signUp;document.querySelector('#auth-error').textContent='';document.querySelector('#auth-title').textContent=signUp?'Account erstellen':'Anmelden';document.querySelector('#auth-eyebrow').textContent=signUp?'Neuer Rendert Account':'Rendert Account';document.querySelector('#auth-help').textContent=signUp?'Kostenlos mit E-Mail und Passwort starten.':'Mit E-Mail und Passwort anmelden.';document.querySelector('#auth-submit').textContent=signUp?'Account erstellen':'Anmelden';document.querySelector('#toggle-auth').textContent=signUp?'Bereits ein Konto?':'Account erstellen';document.querySelector('#auth-dialog').showModal();}
+function renderAuth(){const line=document.querySelector('#account-line'),welcome=document.querySelector('#welcome'),content=document.querySelector('#app-content');if(state.user){const email=state.user.email||'';line.textContent=email;welcome.textContent='Dein Workspace';content.className='workspace';content.innerHTML='<div class="workspace-card"><span class="tag">Angemeldet</span><h3>Rendert Workspace</h3><p>Dein Account ist aktiv. Als Nächstes können hier die eigentlichen KI-Workflows geladen werden.</p><div class="actions"><button class="button" data-action="subscribe" data-plan="creator">Creator aktivieren</button><button class="button ghost" data-action="signout">Abmelden</button></div></div>';}else{line.textContent='Nicht angemeldet.';welcome.textContent='Willkommen.';content.className='workspace locked';content.innerHTML='<div class="workspace-card"><h3>Geschützter Workspace</h3><p>Melde dich an, um deinen Rendert-Bereich zu öffnen.</p><button class="button" data-action="auth">Anmelden</button></div>';}}
+async function submitAuth(e){e.preventDefault();const email=document.querySelector('#email').value.trim(),password=document.querySelector('#password').value,error=document.querySelector('#auth-error');error.textContent='';if(!state.supabase){error.textContent='Auth ist noch nicht konfiguriert.';return;}try{if(state.signUpMode){const {error:err}=await state.supabase.auth.signUp({email,password});if(err)throw err;error.textContent='Bestätigungs-E-Mail versendet. Prüfe dein Postfach.';}else{const {error:err}=await state.supabase.auth.signInWithPassword({email,password});if(err)throw err;document.querySelector('#auth-dialog').close();showView('app');}}catch(err){error.textContent=err.message;}}
+async function resetPassword(){const email=document.querySelector('#email').value.trim(),error=document.querySelector('#auth-error');if(!state.supabase){error.textContent='Auth ist noch nicht konfiguriert.';return;}if(!email){error.textContent='Bitte zuerst deine E-Mail-Adresse eingeben.';return;}const {error:err}=await state.supabase.auth.resetPasswordForEmail(email,{redirectTo:location.origin});error.textContent=err?err.message:'Reset-Link versendet.';}
+async function subscribe(plan){if(!state.user){openAuth(false);return;}try{const res=await fetch('/api/paypal/create-subscription',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({plan})});const data=await res.json();if(!res.ok)throw new Error(data.error||'Zahlungsstart fehlgeschlagen');if(data.approvalUrl)location.href=data.approvalUrl;else alert('PayPal ist noch nicht vollständig aktiviert.');}catch(err){alert(err.message);}}
+document.addEventListener('click',async e=>{const view=e.target.closest('[data-view]');if(view){e.preventDefault();showView(view.dataset.view);return;}const action=e.target.closest('[data-action]')?.dataset.action;if(action==='auth')openAuth(false);if(action==='signup')openAuth(true);if(action==='subscribe'){const el=e.target.closest('[data-action]');subscribe(el.dataset.plan);}if(action==='signout'&&state.supabase)await state.supabase.auth.signOut();});
+document.querySelector('#auth-form').addEventListener('submit',submitAuth);document.querySelector('#toggle-auth').addEventListener('click',()=>openAuth(!state.signUpMode));document.querySelector('#reset-password').addEventListener('click',resetPassword);boot();
