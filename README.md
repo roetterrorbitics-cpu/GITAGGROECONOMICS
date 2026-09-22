@@ -1,28 +1,34 @@
 # Rendert — europäische KI aus Bonn
 
-Dieses Repository enthält einen eigenständigen, statischen Pitchdeck-Prototypen für **Rendert**. Er lässt sich ohne Build-Schritt auf Render Static Sites, GitHub Pages oder jedem anderen Webserver bereitstellen.
+Rendert enthält jetzt einen SaaS-MVP-Unterbau: Landingpage, Account-UI, Supabase Authentication und serverseitigen PayPal-Subscription-Start.
 
-## Lokal ansehen
+## Architektur
+Browser → /api/config → öffentliche Supabase-Konfiguration → Supabase Auth
+Browser → /api/paypal/create-subscription → PayPal OAuth → PayPal Subscriptions API
 
-```bash
-python3 -m http.server 8080
-```
+Der PayPal Client Secret bleibt serverseitig. PayPal REST APIs verwenden OAuth 2.0.
 
-Danach `http://localhost:8080` öffnen.
+## Produktionsvariablen
+SUPABASE_URL
+SUPABASE_ANON_KEY
+PAYPAL_CLIENT_ID
+PAYPAL_CLIENT_SECRET
+PAYPAL_PLAN_ID_CREATOR
+PAYPAL_PLAN_ID_PRO
+PAYPAL_WEBHOOK_ID
+PAYPAL_RETURN_URL
+PAYPAL_CANCEL_URL
+PAYPAL_ENVIRONMENT=production
 
-## Deployment auf Render
+Keine echten Secrets in Git committen.
 
-1. Im Render-Dashboard eine **Static Site** anlegen und dieses Repository verbinden.
-2. Build Command leer lassen und als Publish Directory `.` festlegen.
-3. Eine Render-Subdomain für die Vorschau verwenden.
-4. Nach der Domain-Verifikation `rendert.de` als Custom Domain hinterlegen und die alte Subdomain per 301 auf die kanonische Domain leiten.
+## Supabase
+supabase/schema.sql im Projekt ausführen und E-Mail-Auth aktivieren.
 
-Die konkreten historischen Render-Dienste für Kindred-Notes, Mediant und Flare müssen nach Wiederherstellung des zugehörigen Kontos inventarisiert werden. Sie sind im Deck daher bewusst als verifizierungsbedürftige Projektspuren markiert, nicht als behauptete Live-Services.
+## PayPal
+Die Plan-IDs müssen auf aktive Billing-Pläne zeigen. Die finale Freischaltung sollte nach verifiziertem Subscription-Webhook erfolgen.
 
-## Zahlungen
+## Deployment
+Vercel ist der vorgesehene Produktionshost für Frontend plus /api. GitHub Pages bleibt als statische Vorschau möglich.
 
-Die Seite enthält keine Zugangsdaten und keine produktive Zahlungsabwicklung. Vor einer PayPal-Integration sind Geschäftsmodell, Datenschutz, Widerruf/Impressum sowie Server-seitige Order- und Webhook-Prüfung festzulegen. Die Datei `paypal.example.env` zeigt ausschließlich die benötigte Konfigurationsform.
-
-## Aussagen zu Organisationen
-
-HBRS wird im Pitchdeck als Alma-Mater-Bezug geführt. Mediant, Rötter Records e.V., Flare und Kindred-Notes sind Projekt- bzw. Netzwerkbezüge. BSI, Telekom, Apple, Meta, Alphabet, Tesla sowie genannte Personen werden **nicht** als bestätigte Unterstützer dargestellt. Dafür wären schriftliche, veröffentlichungsfähige Freigaben erforderlich.
+Rechtstexte, Datenschutz, Impressum, Widerrufsbelehrung und steuerliche Angaben vor öffentlichem Verkauf finalisieren.
