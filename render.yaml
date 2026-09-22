@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: peach-pitchdeck
+    runtime: static
+    branch: work
+    buildCommand: ""
+    staticPublishPath: ./site
+    pullRequestPreviewsEnabled: true
