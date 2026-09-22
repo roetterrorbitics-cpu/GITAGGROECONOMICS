@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject private var store: SubscriptionStore
-    @Environment(\\.openURL) private var openURL
+    @Environment(\.openURL) private var openURL
     @State private var selection = 0
 
     var body: some View {
@@ -112,8 +112,11 @@ struct ContentView: View {
 
                 Section("Web-App") {
                     Button("Rendert im Browser öffnen") {
-                        openURL(URL(string: "https://your-production-domain.example/")!)
+                        openURL(URL(string: "https://rendert.example/")!)
                     }
+                    Text("Die finale Produktions-Domain wird nach der Vercel-Verbindung eingesetzt.")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
                 }
             }
             .navigationTitle("Konto")
